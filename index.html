@@ -724,7 +724,7 @@
             <section id="ider" class="page-section">
                 <div class="video-wrapper">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/esv8O2hD9hU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/esv8O2hD9hU?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
             </section>
@@ -732,7 +732,7 @@
             <section id="sink-ya-teeth" class="page-section">
                 <div class="video-wrapper">
                     <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/SIzREq2V25U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe src="https://www.youtube.com/embed/SIzREq2V25U?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
             </section>
@@ -1010,9 +1010,12 @@
             
             var iframes = document.querySelectorAll(".video-container iframe");
             for (var j = 0; j < iframes.length; j++) {
-                var src = iframes[j].src;
-                iframes[j].src = "";
-                iframes[j].src = src;
+                var iframe = iframes[j];
+                if (iframe.src.indexOf("vimeo") > -1) {
+                    iframe.contentWindow.postMessage('{"method":"pause"}', '*');
+                } else if (iframe.src.indexOf("youtube") > -1) {
+                    iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+                }
             }
         }
 
