@@ -197,7 +197,7 @@
             height: 100vh;
             overflow: hidden;
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: center;
             padding: 30px;
         }
@@ -212,7 +212,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .video-wrapper {
@@ -246,7 +246,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
         }
 
         .slideshow {
@@ -385,36 +385,191 @@
             margin-top: 20px;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-
+        /* TABLET - Landscape (1024px and below) */
+        @media (max-width: 1024px) {
             .sidebar {
-                width: 100%;
-                height: auto;
-                min-height: auto;
-                border-right: none;
-                border-bottom: 1px solid var(--grey-light);
-                padding: 15px 20px;
-            }
-
-            .site-title {
-                margin-bottom: 15px;
-            }
-
-            .sidebar-footer {
-                display: none;
+                width: 180px;
+                min-width: 180px;
+                padding: 25px 15px;
             }
 
             .main {
-                height: calc(100vh - 150px);
+                padding: 25px;
+            }
+
+            .video-wrapper {
+                max-width: 100%;
+            }
+
+            .about-wrapper {
+                max-width: 500px;
+            }
+
+            .film-info-wrapper {
+                max-width: 100%;
+            }
+        }
+
+        /* TABLET - Portrait (768px and below) */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 160px;
+                min-width: 160px;
+                padding: 20px 12px;
+            }
+
+            .site-title {
+                font-size: 13px;
+                margin-bottom: 20px;
+            }
+
+            .nav-section-toggle,
+            .nav-category-toggle,
+            .nav-subsection a,
+            .nav-category a,
+            .nav-about a {
+                font-size: 13px;
+            }
+
+            .sidebar-footer {
+                font-size: 12px;
+            }
+
+            .main {
                 padding: 20px;
             }
 
             .slideshow-nav {
                 width: 50px;
                 font-size: 20px;
+            }
+
+            .slideshow-image-container img {
+                max-height: calc(100vh - 150px);
+            }
+
+            .about-wrapper {
+                max-width: 100%;
+                padding-right: 10px;
+            }
+
+            .film-still {
+                max-height: 50vh;
+            }
+        }
+
+        /* MOBILE - Large phones (480px and below) */
+        @media (max-width: 480px) {
+            .sidebar {
+                width: 130px;
+                min-width: 130px;
+                padding: 15px 10px;
+            }
+
+            .site-title {
+                font-size: 12px;
+                margin-bottom: 15px;
+            }
+
+            .nav-section-toggle,
+            .nav-category-toggle,
+            .nav-subsection a,
+            .nav-category a,
+            .nav-about a {
+                font-size: 11px;
+            }
+
+            .nav-subsection {
+                padding-left: 8px;
+            }
+
+            .nav-category {
+                padding-left: 8px;
+            }
+
+            .sidebar-footer {
+                font-size: 10px;
+            }
+
+            .main {
+                padding: 15px;
+            }
+
+            .slideshow-nav {
+                width: 30px;
+                font-size: 16px;
+            }
+
+            .slideshow-caption {
+                font-size: 11px;
+                height: auto;
+            }
+
+            .slideshow-counter {
+                font-size: 11px;
+            }
+
+            .slideshow-image-container img {
+                max-height: calc(100vh - 120px);
+            }
+
+            .about-content,
+            .film-description,
+            .film-press {
+                font-size: 12px;
+            }
+
+            .contact-section h3 {
+                font-size: 12px;
+            }
+
+            .film-still {
+                max-height: 40vh;
+            }
+
+            .welcome {
+                font-size: 12px;
+            }
+        }
+
+        /* MOBILE - Small phones (360px and below) */
+        @media (max-width: 360px) {
+            .sidebar {
+                width: 110px;
+                min-width: 110px;
+                padding: 12px 8px;
+            }
+
+            .site-title {
+                font-size: 11px;
+            }
+
+            .nav-section-toggle,
+            .nav-category-toggle,
+            .nav-subsection a,
+            .nav-category a,
+            .nav-about a {
+                font-size: 10px;
+            }
+
+            .main {
+                padding: 10px;
+            }
+
+            .slideshow-nav {
+                width: 25px;
+                font-size: 14px;
+            }
+
+            .slideshow-caption,
+            .slideshow-counter {
+                font-size: 10px;
+            }
+
+            .about-content,
+            .film-description,
+            .film-press {
+                font-size: 11px;
             }
         }
     </style>
@@ -669,14 +824,14 @@
                         <div class="contact-section">
                             <div class="contact-block">
                                 <h3>🇺🇸 Represented by The Gersh Agency</h3>
-                                <p>Frank Wuliger / <a href="mailto:fwuliger@gersh.com">fwuliger@gersh.com</a> / +1 (310) 205 5868</p>
-                                <p>Alana Duthie / <a href="mailto:aduthie@gersh.com">aduthie@gersh.com</a> / +1 (310) 887 3717</p>
+                                <p>Frank Wuliger / <a href="/cdn-cgi/l/email-protection#690f1e1c05000e0c1b290e0c1b1a01470a0604"><span class="__cf_email__" data-cfemail="86e0f1f3eaefe1e3f4c6e1e3f4f5eea8e5e9eb">[email&#160;protected]</span></a> / +1 (310) 205 5868</p>
+                                <p>Alana Duthie / <a href="/cdn-cgi/l/email-protection#3e5f5a4b4a56575b7e595b4c4d56105d5153"><span class="__cf_email__" data-cfemail="f4959081809c9d91b4939186879cda979b99">[email&#160;protected]</span></a> / +1 (310) 887 3717</p>
                             </div>
                             
                             <div class="contact-block">
                                 <h3>🇬🇧 Managed by Braintrust</h3>
-                                <p>Sam Bank / <a href="mailto:sam@braintrust.tv">sam@braintrust.tv</a> / +44 7788 266832</p>
-                                <p>Helene Sifre / <a href="mailto:helene@braintrust.tv">helene@braintrust.tv</a> / +44 7930 337758</p>
+                                <p>Sam Bank / <a href="/cdn-cgi/l/email-protection#2251434f624050434b4c56505751560c5654"><span class="__cf_email__" data-cfemail="b3c0d2def3d1c1d2daddc7c1c6c0c79dc7c5">[email&#160;protected]</span></a> / +44 7788 266832</p>
+                                <p>Helene Sifre / <a href="/cdn-cgi/l/email-protection#721a171e171c17321000131b1c06000701065c0604"><span class="__cf_email__" data-cfemail="640c0108010a01240616050d0a10161117104a1012">[email&#160;protected]</span></a> / +44 7930 337758</p>
                             </div>
                         </div>
                     </div>
@@ -685,7 +840,7 @@
         </main>
     </div>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         var albumImages = [
             "images/DD_AlbumCovers_00003.jpg",
             "images/DD_AlbumCovers_00007.jpg",
@@ -1098,7 +1253,7 @@
             }
             if (burningcloudSection.classList.contains("active")) {
                 if (e.key === "ArrowLeft") {
-                               currentBurningcloudIndex--;
+                                currentBurningcloudIndex--;
                     if (currentBurningcloudIndex < 0) {
                         currentBurningcloudIndex = burningcloudImages.length - 1;
                     }
