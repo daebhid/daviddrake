@@ -31,8 +31,18 @@
             line-height: 1.6;
             color: var(--blue);
             background: var(--white);
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+        }
+
+        .wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
         }
 
         a {
@@ -53,68 +63,50 @@
             color: var(--green);
         }
 
-        .container {
-            display: flex;
-            height: 100vh;
-        }
-
-        .sidebar {
-            width: 200px;
-            min-width: 200px;
-            padding: 30px 20px;
-            border-right: 1px solid var(--grey-light);
-            height: 100vh;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-
         .site-title {
             font-size: 14px;
             font-weight: 500;
-            margin-bottom: 30px;
-            letter-spacing: 0;
-        }
-
-        .site-title a {
-            color: var(--blue);
-        }
-
-        .site-title a:visited {
-            color: var(--blue);
+            margin-bottom: 40px;
         }
 
         nav {
-            flex: 1;
+            text-align: left;
+            height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
         }
 
-        nav > ul {
+        .footer {
+            margin-top: 40px;
+            font-size: 14px;
+            color: var(--blue);
+        }
+
+        nav ul {
             list-style: none;
         }
 
         nav > ul > li {
-            margin-bottom: 8px;
+            margin-bottom: 4px;
         }
 
-        .nav-section-toggle {
+        .nav-section {
             font-weight: 500;
             font-size: 14px;
-            letter-spacing: 0;
             color: var(--blue);
             cursor: pointer;
-            padding: 4px 0;
-            display: block;
             transition: color 0.15s ease;
         }
 
-        .nav-section-toggle:hover {
+        .nav-section:hover {
             color: var(--green);
         }
 
         .nav-subsection {
             list-style: none;
-            padding-left: 12px;
-            margin-top: 6px;
+            padding-left: 20px;
+            margin-bottom: 12px;
             display: none;
         }
 
@@ -127,40 +119,20 @@
         }
 
         .nav-subsection a {
-            display: block;
-            padding: 2px 0;
             font-size: 14px;
         }
 
-        .nav-subsection a.active {
-            font-weight: 500;
-            color: var(--red);
-        }
-
-        .nav-category-toggle {
+        .nav-category-title {
             font-weight: 500;
             font-size: 14px;
             color: var(--blue);
-            cursor: pointer;
-            padding: 2px 0;
-            display: block;
-            transition: color 0.15s ease;
-        }
-
-        .nav-category-toggle:hover {
-            color: var(--green);
+            margin-bottom: 4px;
         }
 
         .nav-category {
             list-style: none;
-            padding-left: 12px;
-            margin-top: 4px;
-            margin-bottom: 8px;
-            display: none;
-        }
-
-        .nav-category.expanded {
-            display: block;
+            padding-left: 20px;
+            margin-bottom: 12px;
         }
 
         .nav-category li {
@@ -168,861 +140,92 @@
         }
 
         .nav-category a {
-            display: block;
-            padding: 2px 0;
             font-size: 14px;
         }
 
-        .nav-category a.active {
-            color: var(--red);
-        }
-
         .nav-about {
-            margin-top: 20px;
+            margin-top: 16px;
         }
 
         .nav-about a {
             font-size: 14px;
         }
 
-        .sidebar-footer {
-            margin-top: auto;
-            padding-top: 20px;
-            font-size: 14px;
-            color: var(--blue);
-        }
-
-        .main {
-            flex: 1;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-            padding: 30px;
-        }
-
-        .page-section {
-            display: none;
-            width: 100%;
-            height: 100%;
-        }
-
-        .page-section.active {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .video-wrapper {
-            width: 100%;
-            max-width: 900px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .video-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .slideshow-wrapper {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        .slideshow {
-            position: relative;
-            width: 100%;
-            height: calc(100% - 60px);
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-        }
-
-        .slideshow-image-container {
-            max-width: 100%;
-            max-height: 100%;
-            display: flex;
-            align-items: flex-start;
-            justify-content: center;
-        }
-
-        .slideshow-image-container img {
-            max-width: 100%;
-            max-height: calc(100vh - 150px);
-            object-fit: contain;
-            display: block;
-        }
-
-        .slideshow-nav {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-size: 24px;
-            color: var(--blue);
-            transition: color 0.15s ease;
-            user-select: none;
-            z-index: 10;
-        }
-
-        .slideshow-nav:hover {
-            color: var(--green);
-        }
-
-        .slideshow-prev {
-            left: 0;
-        }
-
-        .slideshow-next {
-            right: 0;
-        }
-
-        .slideshow-caption {
-            margin-top: 15px;
-            font-size: 14px;
-            color: var(--blue);
-            text-align: center;
-            height: 45px;
-        }
-
-        .slideshow-caption .title {
-            color: var(--blue);
-            font-weight: 500;
-        }
-
-        .slideshow-counter {
-            margin-top: 8px;
-            font-size: 14px;
-            color: var(--blue);
-        }
-
-        .about-wrapper {
-            max-width: 550px;
-            max-height: 100%;
-            overflow-y: auto;
-            padding-right: 20px;
-        }
-
-        .about-content p {
-            margin-bottom: 1.5em;
-        }
-
-        .contact-section {
-            margin-top: 30px;
-        }
-
-        .contact-section h3 {
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: 0;
-            margin-bottom: 6px;
-            color: var(--blue);
-        }
-
-        .contact-block {
-            margin-bottom: 20px;
-        }
-
-        .contact-block p {
-            margin-bottom: 2px;
-        }
-
-        .welcome {
-            color: var(--blue);
-            font-size: 14px;
-        }
-
-        .film-info-wrapper {
-            max-width: 800px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            text-align: left;
-        }
-
-        .film-still {
-            max-width: 100%;
-            max-height: 60vh;
-            object-fit: contain;
-            margin-bottom: 20px;
-        }
-
-        .film-description {
-            font-size: 14px;
-            line-height: 1.8;
-            color: var(--blue);
-            max-width: 100%;
-        }
-
-        .film-press {
-            font-size: 14px;
-            line-height: 1.8;
-            color: var(--blue);
-            margin-top: 20px;
-        }
-
-        /* TABLET - Landscape (1024px and below) */
-        @media (max-width: 1024px) {
-            .sidebar {
-                width: 180px;
-                min-width: 180px;
-                padding: 25px 15px;
-            }
-
-            .main {
-                padding: 25px;
-            }
-
-            .video-wrapper {
-                max-width: 100%;
-            }
-
-            .about-wrapper {
-                max-width: 500px;
-            }
-
-            .film-info-wrapper {
-                max-width: 100%;
-            }
-        }
-
-        /* TABLET - Portrait (768px and below) */
-        @media (max-width: 768px) {
-            .sidebar {
-                width: 160px;
-                min-width: 160px;
-                padding: 20px 12px;
-            }
-
-            .site-title {
-                font-size: 13px;
-                margin-bottom: 20px;
-            }
-
-            .nav-section-toggle,
-            .nav-category-toggle,
-            .nav-subsection a,
-            .nav-category a,
-            .nav-about a {
-                font-size: 13px;
-            }
-
-            .sidebar-footer {
-                font-size: 12px;
-            }
-
-            .main {
-                padding: 20px;
-            }
-
-            .slideshow-nav {
-                width: 50px;
-                font-size: 20px;
-            }
-
-            .slideshow-image-container img {
-                max-height: calc(100vh - 150px);
-            }
-
-            .about-wrapper {
-                max-width: 100%;
-                padding-right: 10px;
-            }
-
-            .film-still {
-                max-height: 50vh;
-            }
-        }
-
-        /* MOBILE - Large phones (480px and below) */
         @media (max-width: 480px) {
-            .sidebar {
-                width: 130px;
-                min-width: 130px;
-                padding: 15px 10px;
+            body {
+                padding: 30px 20px;
             }
 
             .site-title {
-                font-size: 12px;
-                margin-bottom: 15px;
+                margin-bottom: 30px;
             }
 
-            .nav-section-toggle,
-            .nav-category-toggle,
-            .nav-subsection a,
-            .nav-category a,
-            .nav-about a {
-                font-size: 11px;
-            }
-
-            .nav-subsection {
-                padding-left: 8px;
-            }
-
-            .nav-category {
-                padding-left: 8px;
-            }
-
-            .sidebar-footer {
-                font-size: 10px;
-            }
-
-            .main {
-                padding: 15px;
-            }
-
-            .slideshow-nav {
-                width: 30px;
-                font-size: 16px;
-            }
-
-            .slideshow-caption {
-                font-size: 11px;
-                height: auto;
-            }
-
-            .slideshow-counter {
-                font-size: 11px;
-            }
-
-            .slideshow-image-container img {
-                max-height: calc(100vh - 120px);
-            }
-
-            .about-content,
-            .film-description,
-            .film-press {
-                font-size: 12px;
-            }
-
-            .contact-section h3 {
-                font-size: 12px;
-            }
-
-            .film-still {
-                max-height: 40vh;
-            }
-
-            .welcome {
-                font-size: 12px;
-            }
-        }
-
-        /* MOBILE - Small phones (360px and below) */
-        @media (max-width: 360px) {
-            .sidebar {
-                width: 110px;
-                min-width: 110px;
-                padding: 12px 8px;
-            }
-
-            .site-title {
-                font-size: 11px;
-            }
-
-            .nav-section-toggle,
-            .nav-category-toggle,
-            .nav-subsection a,
-            .nav-category a,
-            .nav-about a {
-                font-size: 10px;
-            }
-
-            .main {
-                padding: 10px;
-            }
-
-            .slideshow-nav {
-                width: 25px;
-                font-size: 14px;
-            }
-
-            .slideshow-caption,
-            .slideshow-counter {
-                font-size: 10px;
-            }
-
-            .about-content,
-            .film-description,
-            .film-press {
-                font-size: 11px;
+            .footer {
+                margin-top: 30px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <aside class="sidebar">
-            <div class="site-title">
-                <a href="#" id="home-link">David Drake</a>
-            </div>
-            
-            <nav>
-                <ul>
-                    <li>
-                        <a href="#" class="nav-section-toggle" id="film-toggle">Film</a>
-                        <ul class="nav-subsection" id="film-subsection">
-                            <li>
-                                <a href="#" class="nav-category-toggle" id="features-toggle">Features</a>
-                                <ul class="nav-category" id="features-category">
-                                    <li><a href="#" class="page-link" data-page="the-long-haul">The Long Haul</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-category-toggle" id="shorts-toggle">Shorts</a>
-                                <ul class="nav-category" id="shorts-category">
-                                    <li><a href="#" class="page-link" data-page="left-over">Left Over</a></li>
-                                    <li><a href="#" class="page-link" data-page="post398">Post398</a></li>
-                                    <li><a href="#" class="page-link" data-page="early-worm">Early Worm</a></li>
-                                    <li><a href="#" class="page-link" data-page="a-foot-of-turf">A Foot of Turf</a></li>
-                                    <li><a href="#" class="page-link" data-page="party-wall">Party Wall</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="#" class="nav-category-toggle" id="musicvideos-toggle">Music Videos</a>
-                                <ul class="nav-category" id="musicvideos-category">
-                                    <li><a href="#" class="page-link" data-page="alex-kozobolis">Alex Kozobolis</a></li>
-                                    <li><a href="#" class="page-link" data-page="ider">IDER</a></li>
-                                    <li><a href="#" class="page-link" data-page="live-footage">Live Footage</a></li>
-                                    <li><a href="#" class="page-link" data-page="aniseed">Aniseed</a></li>
-                                    <li><a href="#" class="page-link" data-page="sink-ya-teeth">Sink Ya Teeth</a></li>
-                                    <li><a href="#" class="page-link" data-page="zach-said">Zach Said</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-section-toggle" id="photo-toggle">Photo</a>
-                        <ul class="nav-subsection" id="photo-subsection">
-                            <li><a href="#" class="page-link" data-page="album-covers">Album Covers</a></li>
-                            <li><a href="#" class="page-link" data-page="common-era">Common Era</a></li>
-                            <li><a href="#" class="page-link" data-page="sailing-stones">Sailing Stones</a></li>
-                            <li><a href="#" class="page-link" data-page="avec-pi">Avec Pi</a></li>
-                            <li><a href="#" class="page-link" data-page="burning-cloud">A Burning Cloud</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-about">
-                        <a href="#" class="page-link" data-page="about">About</a>
-                    </li>
-                </ul>
-            </nav>
+    <div class="wrapper">
+        <div class="site-title">David Drake</div>
+        
+        <nav>
+            <ul>
+                <li>
+                    <span class="nav-section" id="features-toggle">Features</span>
+                    <ul class="nav-subsection" id="features-subsection">
+                        <li><a href="the-long-haul.html">The Long Haul</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="nav-section" id="shorts-toggle">Shorts</span>
+                    <ul class="nav-subsection" id="shorts-subsection">
+                        <li><a href="left-over.html">Left Over</a></li>
+                        <li><a href="post398.html">Post 398</a></li>
+                        <li><a href="early-worm.html">Early Worm</a></li>
+                        <li><a href="a-foot-of-turf.html">A Foot of Turf</a></li>
+                        <li><a href="party-wall.html">Party Wall</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="nav-section" id="musicvideos-toggle">Music Videos</span>
+                    <ul class="nav-subsection" id="musicvideos-subsection">
+                        <li><a href="alex-kozobolis.html">Offline</a></li>
+                        <li><a href="ider.html">Nevermind</a></li>
+                        <li><a href="live-footage.html">View From a Desert Helicopter</a></li>
+                        <li><a href="aniseed.html">Crabshells</a></li>
+                        <li><a href="sink-ya-teeth.html">Substitutes</a></li>
+                        <li><a href="zach-said.html">Catch a Feeling</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="nav-section" id="photo-toggle">Photo</span>
+                    <ul class="nav-subsection" id="photo-subsection">
+                        <li><a href="album-covers.html">Album Covers</a></li>
+                        <li><a href="common-era.html">Common Era</a></li>
+                        <li><a href="sailing-stones.html">Sailing Stones</a></li>
+                        <li><a href="avec-pi.html">Avec Pi</a></li>
+                        <li><a href="burning-cloud.html">A Burning Cloud</a></li>
+                    </ul>
+                </li>
+                <li class="nav-about">
+                    <a href="about.html">About</a>
+                </li>
+            </ul>
+        </nav>
 
-            <div class="sidebar-footer">
-                © 2025 David Drake
-            </div>
-        </aside>
-
-        <main class="main">
-            <section id="home" class="page-section">
-                <p class="welcome">Select a project from the menu</p>
-            </section>
-
-            <section id="the-long-haul" class="page-section">
-                <div class="film-info-wrapper">
-                    <img src="images/the-long-haul.jpg" alt="The Long Haul" class="film-still">
-                    <p class="film-description">The Long Haul (fka Dead Letters) is the debut feature film written and directed by David Drake. It stars Margo Martindale, Cole Sprouse, Stephen Root, Yalitza Aparicio, Jefferson White, and Wes Studi. It was produced by Sam Bank, Helene Sifre (Blue Jean), and Juliet Berman (Griffin in the Summer).</p>
-                    <p class="film-press">Press: <a href="https://deadline.com/2025/03/margo-martindale-dead-letters-first-look-photo-1236351909/" target="_blank">Deadline</a>, <a href="https://www.hollywoodreporter.com/movies/movie-news/margo-martindale-stars-as-truck-driver-in-dead-letters-1236173715/" target="_blank">The Hollywood Reporter</a>, <a href="https://variety.com/2025/film/news/margo-martindale-dead-letters-wraps-production-1236349418/" target="_blank">Variety</a></p>
-                </div>
-            </section>
-
-            <section id="left-over" class="page-section">
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <iframe src="https://player.vimeo.com/video/746423508" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-
-            <section id="aniseed" class="page-section">
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <iframe src="https://player.vimeo.com/video/303471802" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-
-            <section id="live-footage" class="page-section">
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <iframe src="https://player.vimeo.com/video/154831464" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-
-            <section id="a-foot-of-turf" class="page-section">
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <iframe src="https://player.vimeo.com/video/309097061" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-
-            <section id="party-wall" class="page-section">
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <iframe src="https://player.vimeo.com/video/291566185" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-
-            <section id="post398" class="page-section">
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <iframe src="https://player.vimeo.com/video/527164103" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-
-            <section id="zach-said" class="page-section">
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <iframe src="https://player.vimeo.com/video/296845657" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-
-            <section id="alex-kozobolis" class="page-section">
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <iframe src="https://player.vimeo.com/video/399813164" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-
-            <section id="early-worm" class="page-section">
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <iframe src="https://player.vimeo.com/video/375340653" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-
-            <section id="ider" class="page-section">
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/esv8O2hD9hU?enablejsapi=1&modestbranding=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-
-            <section id="sink-ya-teeth" class="page-section">
-                <div class="video-wrapper">
-                    <div class="video-container">
-                        <iframe src="https://www.youtube.com/embed/SIzREq2V25U?enablejsapi=1&modestbranding=1&rel=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-
-            <section id="album-covers" class="page-section">
-                <div class="slideshow-wrapper">
-                    <div class="slideshow" id="album-slideshow">
-                        <div class="slideshow-nav slideshow-prev" id="album-prev">&lt;</div>
-                        <div class="slideshow-image-container">
-                            <img id="album-image" src="" alt="">
-                        </div>
-                        <div class="slideshow-nav slideshow-next" id="album-next">&gt;</div>
-                    </div>
-                    <div class="slideshow-caption">
-                        <span class="title" id="album-title"></span><br>
-                        <span class="description" id="album-desc"></span>
-                        <div class="slideshow-counter" id="album-counter"></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="avec-pi" class="page-section">
-                <div class="slideshow-wrapper">
-                    <div class="slideshow" id="avecpi-slideshow">
-                        <div class="slideshow-nav slideshow-prev" id="avecpi-prev">&lt;</div>
-                        <div class="slideshow-image-container">
-                            <img id="avecpi-image" src="" alt="">
-                        </div>
-                        <div class="slideshow-nav slideshow-next" id="avecpi-next">&gt;</div>
-                    </div>
-                    <div class="slideshow-caption">
-                        <div class="slideshow-counter" id="avecpi-counter"></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="common-era" class="page-section">
-                <div class="slideshow-wrapper">
-                    <div class="slideshow" id="commonera-slideshow">
-                        <div class="slideshow-nav slideshow-prev" id="commonera-prev">&lt;</div>
-                        <div class="slideshow-image-container">
-                            <img id="commonera-image" src="" alt="">
-                        </div>
-                        <div class="slideshow-nav slideshow-next" id="commonera-next">&gt;</div>
-                    </div>
-                    <div class="slideshow-caption">
-                        <div class="slideshow-counter" id="commonera-counter"></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="sailing-stones" class="page-section">
-                <div class="slideshow-wrapper">
-                    <div class="slideshow" id="sailingstones-slideshow">
-                        <div class="slideshow-nav slideshow-prev" id="sailingstones-prev">&lt;</div>
-                        <div class="slideshow-image-container">
-                            <img id="sailingstones-image" src="" alt="">
-                        </div>
-                        <div class="slideshow-nav slideshow-next" id="sailingstones-next">&gt;</div>
-                    </div>
-                    <div class="slideshow-caption">
-                        <div class="slideshow-counter" id="sailingstones-counter"></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="burning-cloud" class="page-section">
-                <div class="slideshow-wrapper">
-                    <div class="slideshow" id="burningcloud-slideshow">
-                        <div class="slideshow-nav slideshow-prev" id="burningcloud-prev">&lt;</div>
-                        <div class="slideshow-image-container">
-                            <img id="burningcloud-image" src="" alt="">
-                        </div>
-                        <div class="slideshow-nav slideshow-next" id="burningcloud-next">&gt;</div>
-                    </div>
-                    <div class="slideshow-caption">
-                        <div class="slideshow-counter" id="burningcloud-counter"></div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="about" class="page-section active">
-                <div class="about-wrapper">
-                    <div class="about-content">
-                        <p>David Drake (b. 1986, New York) is a self-taught American filmmaker and photographer based in the UK. His debut feature Dead Letters is being produced by Helene Sifre (Blue Jean, 2022), Sam Bank, and Juliet Berman. His BFI Network supported short film Left Over stars Chloe Pirrie and Ian Hart, and was selected as a Vimeo Staff Pick in 2022. David is currently developing a further two feature projects with Braintrust, as well as his own slate of original projects through his production company <a href="https://pylon.film" target="_blank">Pylon</a>.</p>
-                        
-                        <p>David's photography has been published widely and has featured in publications like Teen Vogue, Creative Review, Nero, and Clash. He has worked with artists like The 1975, Glass Animals, Django Django, Tom Grennan, IDER, and Kele Okereke. In 2017, the album cover he shot for The 1975 was nominated for an 'artwork' Grammy.</p>
-
-                        <div class="contact-section">
-                            <div class="contact-block">
-                                <h3>🇺🇸 Represented by The Gersh Agency</h3>
-                                <p>Frank Wuliger / fwuliger@gersh.com / +1 (310) 205 5868</p>
-                                <p>Alana Duthie / aduthie@gersh.com / +1 (310) 887 3717</p>
-                            </div>
-                            
-                            <div class="contact-block">
-                                <h3>🇬🇧 Managed by Braintrust</h3>
-                                <p>Sam Bank / sam@braintrust.tv / +44 7788 266832</p>
-                                <p>Helene Sifre / helene@braintrust.tv / +44 7930 337758</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
+        <div class="footer">© 2025 David Drake</div>
     </div>
 
     <script>
-        var albumImages = [
-            "images/DD_AlbumCovers_00003.jpg",
-            "images/DD_AlbumCovers_00007.jpg",
-            "images/DD_AlbumCovers_00010.jpg",
-            "images/DD_AlbumCovers_00014.jpg",
-            "images/DD_AlbumCovers_00015.jpg",
-            "images/DD_AlbumCovers_00016.jpg",
-            "images/DD_AlbumCovers_00017.jpg",
-            "images/DD_AlbumCovers_00018.jpg",
-            "images/DD_AlbumCovers_00019.jpg",
-            "images/DD_AlbumCovers_00021.jpg",
-            "images/DD_AlbumCovers_00022.jpg",
-            "images/DD_AlbumCovers_00025.jpg",
-            "images/DD_AlbumCovers_00026.jpg",
-            "images/DD_AlbumCovers_00028.jpg",
-            "images/DD_AlbumCovers_00029.jpg",
-            "images/DD_AlbumCovers_00030.jpg",
-            "images/DD_AlbumCovers_00031.jpg",
-            "images/DD_AlbumCovers_00032.jpg",
-            "images/DD_AlbumCovers_00034.jpg"
-        ];
-        var currentAlbumIndex = 0;
-
-        var avecpiImages = [
-            "images/avecpi_01.jpg",
-            "images/avecpi_02.jpg",
-            "images/avecpi_03.jpg",
-            "images/avecpi_04.jpg",
-            "images/avecpi_05.jpg",
-            "images/avecpi_06.jpg",
-            "images/avecpi_07.jpg",
-            "images/avecpi_08.jpg",
-            "images/avecpi_09.jpg",
-            "images/avecpi_10.jpg",
-            "images/avecpi_11.jpg",
-            "images/avecpi_12.jpg",
-            "images/avecpi_13.jpg",
-            "images/avecpi_14.jpg",
-            "images/avecpi_15.jpg",
-            "images/avecpi_16.jpg",
-            "images/avecpi_17.jpg",
-            "images/avecpi_18.jpg",
-            "images/avecpi_19.jpg"
-        ];
-        var currentAvecpiIndex = 0;
-
-        var commoneraImages = [
-            "images/commonera_01.jpg",
-            "images/commonera_02.jpg",
-            "images/commonera_03.jpg",
-            "images/commonera_04.jpg",
-            "images/commonera_05.jpg",
-            "images/commonera_06.jpg",
-            "images/commonera_07.jpg",
-            "images/commonera_08.jpg",
-            "images/commonera_09.jpg",
-            "images/commonera_10.jpg",
-            "images/commonera_11.jpg",
-            "images/commonera_12.jpg",
-            "images/commonera_13.jpg",
-            "images/commonera_14.jpg",
-            "images/commonera_15.jpg",
-            "images/commonera_16.jpg",
-            "images/commonera_17.jpg",
-            "images/commonera_18.jpg",
-            "images/commonera_19.jpg",
-            "images/commonera_20.jpg"
-        ];
-        var currentCommoneraIndex = 0;
-
-        var sailingstonesImages = [
-            "images/sailingstones_01.jpg",
-            "images/sailingstones_02.jpg",
-            "images/sailingstones_03.jpg",
-            "images/sailingstones_04.jpg",
-            "images/sailingstones_05.jpg",
-            "images/sailingstones_06.jpg",
-            "images/sailingstones_07.jpg",
-            "images/sailingstones_08.jpg",
-            "images/sailingstones_09.jpg"
-        ];
-        var currentSailingstonesIndex = 0;
-
-        var burningcloudImages = [
-            "images/burningcloud_01.jpg",
-            "images/burningcloud_02.jpg",
-            "images/burningcloud_03.jpg",
-            "images/burningcloud_04.jpg",
-            "images/burningcloud_05.jpg",
-            "images/burningcloud_06.jpg",
-            "images/burningcloud_07.jpg",
-            "images/burningcloud_08.jpg",
-            "images/burningcloud_09.jpg",
-            "images/burningcloud_10.jpg",
-            "images/burningcloud_11.jpg",
-            "images/burningcloud_12.jpg",
-            "images/burningcloud_13.jpg",
-            "images/burningcloud_14.jpg"
-        ];
-        var currentBurningcloudIndex = 0;
-
-        function updateAlbumSlideshow() {
-            var img = document.getElementById("album-image");
-            var counter = document.getElementById("album-counter");
-            img.src = albumImages[currentAlbumIndex];
-            counter.textContent = (currentAlbumIndex + 1) + " / " + albumImages.length;
-        }
-
-        function updateAvecpiSlideshow() {
-            var img = document.getElementById("avecpi-image");
-            var counter = document.getElementById("avecpi-counter");
-            img.src = avecpiImages[currentAvecpiIndex];
-            counter.textContent = (currentAvecpiIndex + 1) + " / " + avecpiImages.length;
-        }
-
-        function updateCommoneraSlideshow() {
-            var img = document.getElementById("commonera-image");
-            var counter = document.getElementById("commonera-counter");
-            img.src = commoneraImages[currentCommoneraIndex];
-            counter.textContent = (currentCommoneraIndex + 1) + " / " + commoneraImages.length;
-        }
-
-        function updateSailingstonesSlideshow() {
-            var img = document.getElementById("sailingstones-image");
-            var counter = document.getElementById("sailingstones-counter");
-            img.src = sailingstonesImages[currentSailingstonesIndex];
-            counter.textContent = (currentSailingstonesIndex + 1) + " / " + sailingstonesImages.length;
-        }
-
-        function updateBurningcloudSlideshow() {
-            var img = document.getElementById("burningcloud-image");
-            var counter = document.getElementById("burningcloud-counter");
-            img.src = burningcloudImages[currentBurningcloudIndex];
-            counter.textContent = (currentBurningcloudIndex + 1) + " / " + burningcloudImages.length;
-        }
-
-        function showPage(pageId) {
-            var allSections = document.querySelectorAll(".page-section");
-            for (var i = 0; i < allSections.length; i++) {
-                allSections[i].classList.remove("active");
-            }
-            
-            var target = document.getElementById(pageId);
-            if (target) {
-                target.classList.add("active");
-            }
-            
-            if (pageId === "album-covers") {
-                updateAlbumSlideshow();
-            }
-            
-            if (pageId === "avec-pi") {
-                updateAvecpiSlideshow();
-            }
-            
-            if (pageId === "common-era") {
-                updateCommoneraSlideshow();
-            }
-            
-            if (pageId === "sailing-stones") {
-                updateSailingstonesSlideshow();
-            }
-            
-            if (pageId === "burning-cloud") {
-                updateBurningcloudSlideshow();
-            }
-            
-            var iframes = document.querySelectorAll(".video-container iframe");
-            for (var j = 0; j < iframes.length; j++) {
-                var iframe = iframes[j];
-                if (iframe.src.indexOf("vimeo") > -1) {
-                    iframe.contentWindow.postMessage('{"method":"pause"}', '*');
-                } else if (iframe.src.indexOf("youtube") > -1) {
-                    iframe.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
-                }
-            }
-        }
-
-        document.getElementById("film-toggle").onclick = function(e) {
-            e.preventDefault();
-            var sub = document.getElementById("film-subsection");
+        document.getElementById("features-toggle").onclick = function() {
+            var sub = document.getElementById("features-subsection");
+            var shortsSub = document.getElementById("shorts-subsection");
+            var musicSub = document.getElementById("musicvideos-subsection");
             var photoSub = document.getElementById("photo-subsection");
+            shortsSub.classList.remove("expanded");
+            musicSub.classList.remove("expanded");
             photoSub.classList.remove("expanded");
             if (sub.classList.contains("expanded")) {
                 sub.classList.remove("expanded");
@@ -1031,11 +234,14 @@
             }
         };
 
-        document.getElementById("photo-toggle").onclick = function(e) {
-            e.preventDefault();
-            var sub = document.getElementById("photo-subsection");
-            var filmSub = document.getElementById("film-subsection");
-            filmSub.classList.remove("expanded");
+        document.getElementById("shorts-toggle").onclick = function() {
+            var sub = document.getElementById("shorts-subsection");
+            var featuresSub = document.getElementById("features-subsection");
+            var musicSub = document.getElementById("musicvideos-subsection");
+            var photoSub = document.getElementById("photo-subsection");
+            featuresSub.classList.remove("expanded");
+            musicSub.classList.remove("expanded");
+            photoSub.classList.remove("expanded");
             if (sub.classList.contains("expanded")) {
                 sub.classList.remove("expanded");
             } else {
@@ -1043,231 +249,33 @@
             }
         };
 
-        document.getElementById("features-toggle").onclick = function(e) {
-            e.preventDefault();
-            var cat = document.getElementById("features-category");
-            var shortsCat = document.getElementById("shorts-category");
-            var musicCat = document.getElementById("musicvideos-category");
-            shortsCat.classList.remove("expanded");
-            musicCat.classList.remove("expanded");
-            if (cat.classList.contains("expanded")) {
-                cat.classList.remove("expanded");
+        document.getElementById("musicvideos-toggle").onclick = function() {
+            var sub = document.getElementById("musicvideos-subsection");
+            var featuresSub = document.getElementById("features-subsection");
+            var shortsSub = document.getElementById("shorts-subsection");
+            var photoSub = document.getElementById("photo-subsection");
+            featuresSub.classList.remove("expanded");
+            shortsSub.classList.remove("expanded");
+            photoSub.classList.remove("expanded");
+            if (sub.classList.contains("expanded")) {
+                sub.classList.remove("expanded");
             } else {
-                cat.classList.add("expanded");
+                sub.classList.add("expanded");
             }
         };
 
-        document.getElementById("shorts-toggle").onclick = function(e) {
-            e.preventDefault();
-            var cat = document.getElementById("shorts-category");
-            var featuresCat = document.getElementById("features-category");
-            var musicCat = document.getElementById("musicvideos-category");
-            featuresCat.classList.remove("expanded");
-            musicCat.classList.remove("expanded");
-            if (cat.classList.contains("expanded")) {
-                cat.classList.remove("expanded");
+        document.getElementById("photo-toggle").onclick = function() {
+            var sub = document.getElementById("photo-subsection");
+            var featuresSub = document.getElementById("features-subsection");
+            var shortsSub = document.getElementById("shorts-subsection");
+            var musicSub = document.getElementById("musicvideos-subsection");
+            featuresSub.classList.remove("expanded");
+            shortsSub.classList.remove("expanded");
+            musicSub.classList.remove("expanded");
+            if (sub.classList.contains("expanded")) {
+                sub.classList.remove("expanded");
             } else {
-                cat.classList.add("expanded");
-            }
-        };
-
-        document.getElementById("musicvideos-toggle").onclick = function(e) {
-            e.preventDefault();
-            var cat = document.getElementById("musicvideos-category");
-            var featuresCat = document.getElementById("features-category");
-            var shortsCat = document.getElementById("shorts-category");
-            featuresCat.classList.remove("expanded");
-            shortsCat.classList.remove("expanded");
-            if (cat.classList.contains("expanded")) {
-                cat.classList.remove("expanded");
-            } else {
-                cat.classList.add("expanded");
-            }
-        };
-
-        document.getElementById("home-link").onclick = function(e) {
-            e.preventDefault();
-            showPage("about");
-            var allLinks = document.querySelectorAll(".page-link");
-            for (var j = 0; j < allLinks.length; j++) {
-                allLinks[j].classList.remove("active");
-            }
-        };
-
-        var pageLinks = document.querySelectorAll(".page-link");
-        for (var i = 0; i < pageLinks.length; i++) {
-            pageLinks[i].onclick = function(e) {
-                e.preventDefault();
-                var pageId = this.getAttribute("data-page");
-                showPage(pageId);
-                var allLinks = document.querySelectorAll(".page-link");
-                for (var j = 0; j < allLinks.length; j++) {
-                    allLinks[j].classList.remove("active");
-                }
-                this.classList.add("active");
-            };
-        }
-
-        document.getElementById("album-prev").onclick = function() {
-            currentAlbumIndex--;
-            if (currentAlbumIndex < 0) {
-                currentAlbumIndex = albumImages.length - 1;
-            }
-            updateAlbumSlideshow();
-        };
-
-        document.getElementById("album-next").onclick = function() {
-            currentAlbumIndex++;
-            if (currentAlbumIndex >= albumImages.length) {
-                currentAlbumIndex = 0;
-            }
-            updateAlbumSlideshow();
-        };
-
-        document.getElementById("avecpi-prev").onclick = function() {
-            currentAvecpiIndex--;
-            if (currentAvecpiIndex < 0) {
-                currentAvecpiIndex = avecpiImages.length - 1;
-            }
-            updateAvecpiSlideshow();
-        };
-
-        document.getElementById("avecpi-next").onclick = function() {
-            currentAvecpiIndex++;
-            if (currentAvecpiIndex >= avecpiImages.length) {
-                currentAvecpiIndex = 0;
-            }
-            updateAvecpiSlideshow();
-        };
-
-        document.getElementById("commonera-prev").onclick = function() {
-            currentCommoneraIndex--;
-            if (currentCommoneraIndex < 0) {
-                currentCommoneraIndex = commoneraImages.length - 1;
-            }
-            updateCommoneraSlideshow();
-        };
-
-        document.getElementById("commonera-next").onclick = function() {
-            currentCommoneraIndex++;
-            if (currentCommoneraIndex >= commoneraImages.length) {
-                currentCommoneraIndex = 0;
-            }
-            updateCommoneraSlideshow();
-        };
-
-        document.getElementById("sailingstones-prev").onclick = function() {
-            currentSailingstonesIndex--;
-            if (currentSailingstonesIndex < 0) {
-                currentSailingstonesIndex = sailingstonesImages.length - 1;
-            }
-            updateSailingstonesSlideshow();
-        };
-
-        document.getElementById("sailingstones-next").onclick = function() {
-            currentSailingstonesIndex++;
-            if (currentSailingstonesIndex >= sailingstonesImages.length) {
-                currentSailingstonesIndex = 0;
-            }
-            updateSailingstonesSlideshow();
-        };
-
-        document.getElementById("burningcloud-prev").onclick = function() {
-            currentBurningcloudIndex--;
-            if (currentBurningcloudIndex < 0) {
-                currentBurningcloudIndex = burningcloudImages.length - 1;
-            }
-            updateBurningcloudSlideshow();
-        };
-
-        document.getElementById("burningcloud-next").onclick = function() {
-            currentBurningcloudIndex++;
-            if (currentBurningcloudIndex >= burningcloudImages.length) {
-                currentBurningcloudIndex = 0;
-            }
-            updateBurningcloudSlideshow();
-        };
-
-        document.onkeydown = function(e) {
-            var albumSection = document.getElementById("album-covers");
-            var avecpiSection = document.getElementById("avec-pi");
-            var commoneraSection = document.getElementById("common-era");
-            var sailingstonesSection = document.getElementById("sailing-stones");
-            var burningcloudSection = document.getElementById("burning-cloud");
-            if (albumSection.classList.contains("active")) {
-                if (e.key === "ArrowLeft") {
-                    currentAlbumIndex--;
-                    if (currentAlbumIndex < 0) {
-                        currentAlbumIndex = albumImages.length - 1;
-                    }
-                    updateAlbumSlideshow();
-                } else if (e.key === "ArrowRight") {
-                    currentAlbumIndex++;
-                    if (currentAlbumIndex >= albumImages.length) {
-                        currentAlbumIndex = 0;
-                    }
-                    updateAlbumSlideshow();
-                }
-            }
-            if (avecpiSection.classList.contains("active")) {
-                if (e.key === "ArrowLeft") {
-                    currentAvecpiIndex--;
-                    if (currentAvecpiIndex < 0) {
-                        currentAvecpiIndex = avecpiImages.length - 1;
-                    }
-                    updateAvecpiSlideshow();
-                } else if (e.key === "ArrowRight") {
-                    currentAvecpiIndex++;
-                    if (currentAvecpiIndex >= avecpiImages.length) {
-                        currentAvecpiIndex = 0;
-                    }
-                    updateAvecpiSlideshow();
-                }
-            }
-            if (commoneraSection.classList.contains("active")) {
-                if (e.key === "ArrowLeft") {
-                    currentCommoneraIndex--;
-                    if (currentCommoneraIndex < 0) {
-                        currentCommoneraIndex = commoneraImages.length - 1;
-                    }
-                    updateCommoneraSlideshow();
-                } else if (e.key === "ArrowRight") {
-                    currentCommoneraIndex++;
-                    if (currentCommoneraIndex >= commoneraImages.length) {
-                        currentCommoneraIndex = 0;
-                    }
-                    updateCommoneraSlideshow();
-                }
-            }
-            if (sailingstonesSection.classList.contains("active")) {
-                if (e.key === "ArrowLeft") {
-                    currentSailingstonesIndex--;
-                    if (currentSailingstonesIndex < 0) {
-                        currentSailingstonesIndex = sailingstonesImages.length - 1;
-                    }
-                    updateSailingstonesSlideshow();
-                } else if (e.key === "ArrowRight") {
-                    currentSailingstonesIndex++;
-                    if (currentSailingstonesIndex >= sailingstonesImages.length) {
-                        currentSailingstonesIndex = 0;
-                    }
-                    updateSailingstonesSlideshow();
-                }
-            }
-            if (burningcloudSection.classList.contains("active")) {
-                if (e.key === "ArrowLeft") {
-                                currentBurningcloudIndex--;
-                    if (currentBurningcloudIndex < 0) {
-                        currentBurningcloudIndex = burningcloudImages.length - 1;
-                    }
-                    updateBurningcloudSlideshow();
-                } else if (e.key === "ArrowRight") {
-                    currentBurningcloudIndex++;
-                    if (currentBurningcloudIndex >= burningcloudImages.length) {
-                        currentBurningcloudIndex = 0;
-                    }
-                    updateBurningcloudSlideshow();
-                }
+                sub.classList.add("expanded");
             }
         };
     </script>
