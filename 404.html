@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>Page Not Found — David Drake</title>
+    <link rel="stylesheet" href="/style.css">
+    <script>
+    (function () {
+        // Legacy URL patterns from earlier versions of this site (Indexhibit ~2011,
+        // Squarespace ~2016, and the 2019 build). Anything matching is sent to the
+        // nearest equivalent on the current site.
+        var rules = [
+            [/^\/personal(\/|$)/i,      "/photography/"],
+            [/^\/lifestyle(\/|$)/i,     "/photography/"],
+            [/^\/filter(\/|$)/i,        "/photography/"],
+            [/^\/directing(\/|$)/i,     "/film/"],
+            [/^\/dead-letters(\/|$)/i,  "/film/"],
+            [/^\/home(\/|$)/i,          "/"],
+            [/^\/index\.php/i,          "/"]
+        ];
+
+        var path = window.location.pathname;
+
+        for (var i = 0; i < rules.length; i++) {
+            if (rules[i][0].test(path)) {
+                window.location.replace(rules[i][1]);
+                return;
+            }
+        }
+    })();
+    </script>
+</head>
+<body>
+    <main>
+        <h1>Page Not Found</h1>
+        <p>That page no longer exists. It may have been part of an earlier version of this site.</p>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/film/">Film</a></li>
+            <li><a href="/photography/">Photography</a></li>
+            <li><a href="/writing/">Writing</a></li>
+            <li><a href="/about.html">About</a></li>
+        </ul>
+    </main>
+</body>
+</html>
