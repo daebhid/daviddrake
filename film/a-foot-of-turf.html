@@ -191,7 +191,7 @@
             <li class="pair"><span class="l">Status</span><span class="r">Released</span></li>
         </ol>
         <p class="prose">A Foot of Turf is a short documentary directed by David Drake. A remote island's culture is fading away due to an economic downturn, but islanders both near and far return every week to watch their beloved soccer team.</p>
-        <div class="pair-media" style="--sum: 2.4842"><div class="m" style="--r: 0.7064"><a href="../images/posters/a-foot-of-turf.jpg" target="_blank" rel="noopener"><img src="../images/posters/a-foot-of-turf.jpg" alt="A Foot of Turf, poster"></a></div><div class="m" style="--r: 1.7778"><div class="video"><iframe src="https://player.vimeo.com/video/309097061" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div></div>
+        <div class="pair-media" style="--sum: 2.4842"><div class="m" style="--r: 0.7064"><a href="../images/posters/a-foot-of-turf.jpg" target="_blank" rel="noopener"><img src="../images/posters/a-foot-of-turf.jpg" alt="A Foot of Turf, poster"></a></div><div class="m" style="--r: 1.7778"><div class="video"><a class="play" href="https://vimeo.com/309097061" data-src="https://player.vimeo.com/video/309097061?autoplay=1" aria-label="Play video"><img src="../images/video-stills/a-foot-of-turf.jpg" alt="Video still"></a></div></div></div>
         <section class="block">
             <h2>Credits</h2>
             <ol class="pairs">
@@ -219,5 +219,17 @@
         </div>
         </section>
     </main>
+    <script>
+    document.addEventListener('click', function (e) {
+        var play = e.target.closest('.play');
+        if (!play) return;
+        e.preventDefault();
+        var f = document.createElement('iframe');
+        f.src = play.dataset.src;
+        f.allow = 'autoplay; fullscreen; picture-in-picture';
+        f.allowFullscreen = true;
+        play.replaceWith(f);
+    });
+    </script>
 </body>
 </html>
