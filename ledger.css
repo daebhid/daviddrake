@@ -184,29 +184,16 @@ header p {
     margin: 0;
 }
 
-@media (max-width: 760px) {
-    .ledger-head {
-        display: none;
-    }
-    .ledger-rows li {
-        grid-template-columns: 9ch minmax(0, 1fr);
-        margin-bottom: 0.6rem;
-    }
-    .ledger-rows .title::after,
-    .ledger-rows .type::after {
-        content: none;
-    }
-    .ledger-rows .title .t {
-        white-space: normal;
-    }
-    .ledger-rows .type,
-    .ledger-rows .status {
-        grid-column: 2;
-        color: var(--muted);
-    }
-    .ledger-rows .type {
-        display: inline;
-    }
+/* Sheets: on narrow screens the list keeps its desktop layout and
+   scrolls sideways, like a spreadsheet. The year column stays put. */
+
+.sheet {
+    overflow-x: auto;
+    margin: 0 0 4rem;
+}
+
+.sheet .ledger-rows {
+    margin-bottom: 0;
 }
 
 /* Project pages */
@@ -235,6 +222,10 @@ header p {
     margin: 0 0 2.5rem;
 }
 
+.block .sheet {
+    margin-bottom: 0;
+}
+
 .prose {
     max-width: 72ch;
     margin: 0 0 1.5rem;
@@ -248,9 +239,9 @@ header p {
 
 .pairs {
     list-style: none;
-    max-width: 72ch;
     margin: 0;
     padding: 0;
+    overflow-x: auto;
 }
 
 .facts {
@@ -260,48 +251,47 @@ header p {
 .pairs li {
     display: flex;
     white-space: nowrap;
+    min-width: max-content;
 }
 
-.pairs .l {
+.pairs .l,
+.pairs .r {
     flex: none;
 }
 
-/* Long credits wrap rather than being cut off */
 .pairs .r {
     order: 2;
-    flex: 0 1 auto;
-    white-space: normal;
-    text-align: right;
 }
 
 /* Dots between the two parts, only when there is a right-hand part */
 .pairs li:has(.r)::before {
     content: "................................................................................................................................................................";
     order: 1;
-    flex: 1;
-    min-width: 2ch;
+    flex: 1 1 0;
+    width: 0;
+    min-width: 4ch;
     overflow: hidden;
     margin: 0 1ch;
     color: var(--muted);
 }
 
-/* Media */
-
-.still,
-.video {
-    display: block;
-    width: 100%;
-    max-width: 72rem;
-    margin: 0 0 2.5rem;
-}
+/* Media: every image sits at the same height */
 
 .still {
-    height: auto;
+    display: block;
+    height: 18rem;
+    width: auto;
+    max-width: 100%;
+    object-fit: cover;
+    margin: 0 0 2.5rem;
 }
 
 .video {
     position: relative;
+    width: 100%;
+    max-width: 48rem;
     aspect-ratio: 16 / 9;
+    margin: 0 0 2.5rem;
 }
 
 .video iframe {
@@ -312,56 +302,99 @@ header p {
     border: 0;
 }
 
-.plates {
-    columns: 3 16rem;
-    column-gap: 1rem;
+/* Justified rows: each row fills the width exactly and no image is
+   cropped. Every image grows in proportion to its width / height (--r);
+   the spacer stops the last row stretching. */
+
+.plates,
+.covers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
     margin: 0 0 2.5rem;
+    --row: 16rem;
 }
 
-.plates a {
+.plates::after,
+.covers::after {
+    content: "";
+    flex-grow: 1000000;
+}
+
+.plates a,
+.covers a {
     display: block;
-    break-inside: avoid;
-    margin-bottom: 1rem;
+    flex: calc(var(--r) * 100) 1 calc(var(--r) * var(--row));
+    min-width: 0;
 }
 
-.plates img {
+.plates img,
+.covers img {
     display: block;
     width: 100%;
     height: auto;
 }
 
-.covers {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin: 0 0 2.5rem;
-}
-
-/* Every image in a row is the same height */
-.covers img {
-    height: 18rem;
-    width: auto;
-    max-width: 100%;
-    object-fit: cover;
-}
-
 @media (max-width: 760px) {
-    .covers img {
+    body {
+        font-size: 13px;
+    }
+
+    /* One line per row; the sheet scrolls sideways instead of wrapping */
+    .sheet > .ledger-head,
+    .sheet > .ledger-rows {
+        width: var(--sheet-width, 120ch);
+    }
+    .ledger-rows .title .t {
+        white-space: nowrap;
+    }
+    .ledger-rows .c {
+        align-items: center;
+    }
+    .sheet .date {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: var(--paper);
+    }
+
+    .still {
         height: 11rem;
     }
-    .pairs li {
-        white-space: normal;
-        flex-wrap: wrap;
+
+    /* Checkboxes: one line per group, swiped sideways; group name pinned */
+    .filter-line {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        white-space: nowrap;
+        scrollbar-width: none;
     }
-    .pairs li:has(.r)::before {
-        content: none;
+    .filter-line::-webkit-scrollbar {
+        display: none;
     }
-    .pairs .l,
-    .pairs .r {
-        max-width: none;
+    .filter-line + .filter-line {
+        margin-top: 0.5rem;
     }
-    .pairs .r {
-        width: 100%;
-        color: var(--muted);
+
+    /* Contact lines: one line each, swiped sideways */
+    .contact p {
+        white-space: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+    .contact p::-webkit-scrollbar {
+        display: none;
+    }
+    .filter-name {
+        position: sticky;
+        left: 0;
+        z-index: 1;
+        background: var(--paper);
+        padding-right: 1ch;
+    }
+    .plates,
+    .covers {
+        --row: 8rem;
+        gap: 0.5rem;
     }
 }
