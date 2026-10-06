@@ -301,6 +301,37 @@ header p {
     margin: 0 0 2.5rem;
 }
 
+/* Poster beside its video or still: both the same height, row capped
+   so it sits at 18rem tall on desktop and shrinks to fit on phones. */
+.pair-media {
+    display: flex;
+    gap: 0.75rem;
+    width: 100%;
+    max-width: calc(var(--row, 18rem) * var(--sum) + 0.75rem);
+    margin: 0 0 2.5rem;
+}
+
+.pair-media .m {
+    flex: var(--r) 1 0;
+    min-width: 0;
+}
+
+.pair-media a {
+    display: block;
+}
+
+.pair-media img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.pair-media .video {
+    max-width: none;
+    margin: 0;
+    aspect-ratio: var(--r);
+}
+
 .video iframe {
     position: absolute;
     inset: 0;
@@ -367,6 +398,9 @@ header p {
 
     .still {
         max-height: 11rem;
+    }
+    .pair-media {
+        gap: 0.5rem;
     }
 
     /* Checkboxes: one line per group, swiped sideways; group name pinned */
