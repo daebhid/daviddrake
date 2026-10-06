@@ -402,6 +402,22 @@ header p {
     min-width: 0;
 }
 
+/* A video leads the tiles at the same height as the film pages (27rem) */
+.covers.with-video {
+    --row: 27rem;
+}
+
+.covers .tile-video {
+    flex: calc(var(--r) * 100) 1 calc(var(--r) * var(--row));
+    min-width: 0;
+}
+
+.covers .tile-video .video {
+    max-width: none;
+    margin: 0;
+    aspect-ratio: var(--r);
+}
+
 .plates img,
 .covers img {
     display: block;
@@ -475,8 +491,12 @@ header p {
         padding-right: 1ch;
     }
     .plates,
-    .covers {
+    .covers,
+    .covers.with-video {
         --row: 8rem;
         gap: 0.5rem;
+    }
+    .covers .tile-video {
+        flex-basis: 100%;
     }
 }
