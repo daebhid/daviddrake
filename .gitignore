@@ -1,2 +1,6 @@
 __pycache__/
 .DS_Store
+# Site source data and build scripts live in daviddrake3, not here
+archive.csv
+album-covers.csv
+tools/
