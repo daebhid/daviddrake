@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../ledger.css?v=8d2c0d2482">
+    <link rel="stylesheet" href="../ledger.css?v=f696b6ee3e">
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -189,7 +189,7 @@
             <li class="pair"><span class="l">Status</span><span class="r">Released</span></li>
         </ol>
         <p class="prose">Party Wall is a short film written and directed by David Drake. A self-help vlogger in her 30s hasn't left her home in 18 months, and has become fixated with her neighbors, with whom she shares a common wall.</p>
-        <div class="pair-media" style="--sum: 2.0528"><div class="m" style="--r: 0.7064"><a href="../images/posters/party-wall.jpg" target="_blank" rel="noopener"><img src="../images/posters/party-wall.jpg" alt="Party Wall, poster"></a></div><div class="m" style="--r: 1.3464"><div class="video"><iframe src="https://player.vimeo.com/video/291566185" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe></div></div></div>
+        <div class="pair-media" style="--sum: 2.0528"><div class="m" style="--r: 0.7064"><a href="../images/posters/party-wall.jpg" target="_blank" rel="noopener"><img src="../images/posters/party-wall.jpg" alt="Party Wall, poster"></a></div><div class="m" style="--r: 1.3464"><div class="video"><a class="play" href="https://vimeo.com/291566185" data-src="https://player.vimeo.com/video/291566185?autoplay=1" aria-label="Play video"><img src="../images/video-stills/party-wall.jpg" alt="Video still"></a></div></div></div>
         <section class="block">
             <h2>Cast</h2>
             <ol class="pairs">
@@ -223,5 +223,17 @@
         </div>
         </section>
     </main>
+    <script>
+    document.addEventListener('click', function (e) {
+        var play = e.target.closest('.play');
+        if (!play) return;
+        e.preventDefault();
+        var f = document.createElement('iframe');
+        f.src = play.dataset.src;
+        f.allow = 'autoplay; fullscreen; picture-in-picture';
+        f.allowFullscreen = true;
+        play.replaceWith(f);
+    });
+    </script>
 </body>
 </html>
