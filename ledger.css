@@ -1,0 +1,367 @@
+:root {
+    --paper: #f5f2eb;
+    --ink: #3a3a38;
+    --muted: #9a968d;
+    --cols: 9ch minmax(0, 1fr) 27ch 14ch;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: "IBM Plex Mono", "SFMono-Regular", Menlo, Consolas, monospace;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--muted);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+}
+
+a:hover {
+    text-decoration-color: currentColor;
+}
+
+.ledger {
+    padding: 4rem clamp(1.25rem, 5vw, 3rem) 5rem;
+}
+
+h1,
+h2 {
+    font-size: 1em;
+    font-weight: 500;
+    margin: 0;
+}
+
+.ledger > header h1 {
+    margin-bottom: 1.5rem;
+}
+
+.ledger > .contact {
+    margin: 0 0 2.5rem;
+}
+
+header p {
+    margin: 0 0 2.5rem;
+    color: var(--muted);
+}
+
+/* Show / hide */
+
+.filters {
+    margin: 0 0 2.5rem;
+}
+
+.filter-line {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 2ch;
+}
+
+.filter-line + .filter-line {
+    margin-top: 0.25rem;
+}
+
+.filter-name {
+    flex: 0 0 12ch;
+    color: var(--muted);
+}
+
+.filters label {
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.filters input {
+    margin: 0 0.5ch 0 0;
+    accent-color: var(--ink);
+    vertical-align: -0.1em;
+}
+
+.filters .count {
+    color: var(--muted);
+}
+
+/* Rows: 2026.....The Long Haul.....Feature Film.....Released */
+
+.ledger-head,
+.ledger-rows li {
+    display: grid;
+    grid-template-columns: var(--cols);
+}
+
+.ledger-head {
+    margin-bottom: 0.5rem;
+}
+
+.sort {
+    font: inherit;
+    color: var(--muted);
+    background: none;
+    border: 0;
+    padding: 0;
+    text-align: left;
+    cursor: pointer;
+}
+
+.sort:hover,
+.sort[aria-sort="ascending"],
+.sort[aria-sort="descending"] {
+    color: var(--ink);
+}
+
+.sort[aria-sort="ascending"]::after {
+    content: " ↑";
+}
+
+.sort[aria-sort="descending"]::after {
+    content: " ↓";
+}
+
+.ledger-rows {
+    list-style: none;
+    margin: 0 0 4rem;
+    padding: 0;
+}
+
+.ledger-rows li[hidden] {
+    display: none;
+}
+
+.ledger-rows .c {
+    display: flex;
+    min-width: 0;
+    white-space: nowrap;
+}
+
+/* Long titles wrap rather than being cut off; dots fill the last line */
+.ledger-rows .c {
+    align-items: flex-end;
+}
+
+.ledger-rows .date {
+    align-items: flex-start;
+}
+
+.ledger-rows .title .t {
+    white-space: normal;
+}
+
+.ledger-rows .date::after,
+.ledger-rows .title::after,
+.ledger-rows .type::after {
+    content: "........................................................................................................................................................................................................................................";
+    flex: 1;
+    min-width: 2ch;
+    overflow: hidden;
+    margin: 0 1ch;
+    color: var(--muted);
+}
+
+.ledger-rows .date::after {
+    margin-left: 0;
+}
+
+/* Footnotes sit back in grey */
+
+.ledger-rows li.fn {
+    color: var(--muted);
+}
+
+.contact p {
+    margin: 0;
+}
+
+@media (max-width: 760px) {
+    .ledger-head {
+        display: none;
+    }
+    .ledger-rows li {
+        grid-template-columns: 9ch minmax(0, 1fr);
+        margin-bottom: 0.6rem;
+    }
+    .ledger-rows .title::after,
+    .ledger-rows .type::after {
+        content: none;
+    }
+    .ledger-rows .title .t {
+        white-space: normal;
+    }
+    .ledger-rows .type,
+    .ledger-rows .status {
+        grid-column: 2;
+        color: var(--muted);
+    }
+    .ledger-rows .type {
+        display: inline;
+    }
+}
+
+/* Project pages */
+
+.page header {
+    margin-bottom: 2.5rem;
+}
+
+.crumb {
+    margin: 0 0 1.5rem;
+    color: var(--ink);
+}
+
+.page h1 {
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.page h2 {
+    margin: 0 0 0.75rem;
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.block {
+    margin: 0 0 2.5rem;
+}
+
+.prose {
+    max-width: 72ch;
+    margin: 0 0 1.5rem;
+}
+
+.note {
+    color: var(--muted);
+}
+
+/* Two-part leader rows: Cinematography ........ Mika Altskan */
+
+.pairs {
+    list-style: none;
+    max-width: 72ch;
+    margin: 0;
+    padding: 0;
+}
+
+.facts {
+    margin-bottom: 2.5rem;
+}
+
+.pairs li {
+    display: flex;
+    white-space: nowrap;
+}
+
+.pairs .l {
+    flex: none;
+}
+
+/* Long credits wrap rather than being cut off */
+.pairs .r {
+    order: 2;
+    flex: 0 1 auto;
+    white-space: normal;
+    text-align: right;
+}
+
+/* Dots between the two parts, only when there is a right-hand part */
+.pairs li:has(.r)::before {
+    content: "................................................................................................................................................................";
+    order: 1;
+    flex: 1;
+    min-width: 2ch;
+    overflow: hidden;
+    margin: 0 1ch;
+    color: var(--muted);
+}
+
+/* Media */
+
+.still,
+.video {
+    display: block;
+    width: 100%;
+    max-width: 72rem;
+    margin: 0 0 2.5rem;
+}
+
+.still {
+    height: auto;
+}
+
+.video {
+    position: relative;
+    aspect-ratio: 16 / 9;
+}
+
+.video iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.plates {
+    columns: 3 16rem;
+    column-gap: 1rem;
+    margin: 0 0 2.5rem;
+}
+
+.plates a {
+    display: block;
+    break-inside: avoid;
+    margin-bottom: 1rem;
+}
+
+.plates img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.covers {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0 0 2.5rem;
+}
+
+/* Every image in a row is the same height */
+.covers img {
+    height: 18rem;
+    width: auto;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 760px) {
+    .covers img {
+        height: 11rem;
+    }
+    .pairs li {
+        white-space: normal;
+        flex-wrap: wrap;
+    }
+    .pairs li:has(.r)::before {
+        content: none;
+    }
+    .pairs .l,
+    .pairs .r {
+        max-width: none;
+    }
+    .pairs .r {
+        width: 100%;
+        color: var(--muted);
+    }
+}
